@@ -1,0 +1,35 @@
+
+
+ INSERT INTO tab1(actor, role) VALUES ('Dakota_Fanning','Tessa'),
+ ('Kaya_Scodelario','Teresa');
+INSERT 0 2
+ INSERT INTO tab2 (film, actor) VALUES 
+('Now_is_good','Dakota_Fanning'),
+('The_maze_runner','Kaya_Scodelario');
+INSERT 0 2
+INSERT INTO tab1(actor, role) VALUES ('Daniel_Radcliffe','Harry'),
+ ('Logan_Lerman','Percy');
+INSERT 0 2
+ INSERT INTO tab2 (film, actor) VALUES
+ ('Harry_Potter','Daniel_Radcliffe'),
+ ('Percy_Jackson','Logan_Lerman');
+INSERT 0 2
+
+INSERT INTO tab3 (film, count) VALUES
+ ('Now_is_good','750000'),
+ ('The_maze_runner','34075640'),
+ ('Harry_Potter','77234315'),
+ ('Percy_Jackson','2264969');
+INSERT 0 4
+ INSERT INTO tab4 (budget, count) VALUES
+ ('500000','750000'),
+ ('340000','34075640'),
+ ('11550000','77234315'),
+('95000','2264969');
+INSERT 0 4
+INSERT INTO tab5 (film,book) VALUES
+ ('Now_is_good','Before_i_die'),
+ ('The_maze_runner','The_maze_runner(trilogy)'),
+('Harry_Potter','Harry_Potter(romance)'),
+ ('Percy_Jackson','Percy_Jackson(trilogy)');
+INSERT 0 4

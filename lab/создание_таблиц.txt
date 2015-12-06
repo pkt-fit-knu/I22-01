@@ -1,0 +1,18 @@
+
+
+ CREATE DATABASE films;
+CREATE DATABASE
+ create table tab1( actor text PRIMARY KEY, role text UNIQUE);
+CREATE TABLE
+create table tab2( film text PRIMARY KEY, actor text, FOREIGN KEY(act
+or) REFERENCES tab1(actor));
+CREATE TABLE
+create table tab3( film text, count integer NOT NULL PRIMARY KEY, FOR
+EIGN KEY(film) REFERENCES tab2(film));
+CREATE TABLE
+ create table tab4 ( budget integer NOT NULL, count integer NOT NULL,
+FOREIGN KEY(count) REFERENCES tab3(count));
+CREATE TABLE
+ create table tab5 ( film text, book text UNIQUE, FOREIGN KEY(film) RE
+FERENCES tab2 (film));
+CREATE TABLE
