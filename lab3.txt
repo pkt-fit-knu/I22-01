@@ -1,0 +1,87 @@
+
+package javaapplication34; 
+
+import java.io.FileWriter; 
+import java.io.IOException; 
+import java.sql.Connection; 
+import java.sql.DriverManager; 
+import java.sql.ResultSet; 
+import java.sql.SQLException; 
+import java.sql.Statement; 
+import org.json.simple.JSONObject; 
+
+
+public class javaapplication34 { 
+public static void main(String[] args) { 
+try { 
+Class.forName("org.postgresql.Driver"); 
+System.out.println("Postgresql JDBC Driver loaded"); 
+} catch (ClassNotFoundException e) { 
+System.out.println("Driver failed"); 
+return; 
+} 
+try { 
+try (Connection connection = DriverManager.getConnection( 
+"jdbc:postgresql://127.0.0.1:5432/d1" 
+        ) 
+        )
+{
+System.out.println("good connection"); 
+exequteQuery(connection); 
+} 
+
+} catch (SQLException e) { 
+System.out.println("Connection Failed!"); 
+} 
+} 
+
+
+
+public static boolean exequteQuery(Connection c) { 
+try { 
+try (Statement s = c.createStatement()) { 
+ResultSet rs = s.executeQuery( 
+"select t1.role, t2.film from tab1 t1 " 
+
++ "INNER JOIN tab2 t2 ON t1.actor = t2.actor"); 
+
+
+JSONObject resultJSON = new JSONObject(); 
+
+int i=0; 
+while (rs.next()) { 
+JSONObject row = new JSONObject(); 
+String rl = rs.getString(1); 
+String fl = rs.getString(2); 
+//String sur = rs.getString(3); 
+
+row.put("role", rl); 
+//row.put("surname", sur); 
+row.put("film" , fl); 
+
+resultJSON.put("tab3" + i, row); 
+i++; 
+} 
+
+System.out.println(resultJSON.toJSONString()); 
+
+writeToFile(resultJSON.toJSONString()); 
+return true; 
+} 
+} catch (Exception e) { 
+System.out.println("eroor"); 
+e.printStackTrace(); 
+return false; 
+} 
+
+} 
+
+static void writeToFile(String str) throws IOException{ 
+
+FileWriter file = new FileWriter("d:/output.json",false ); 
+file.write(str); 
+file.flush(); 
+file.close(); 
+} 
+}
+

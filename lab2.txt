@@ -1,0 +1,56 @@
+
+package javaapplication33;
+
+import java.sql.Connection; 
+import java.sql.DriverManager; 
+import java.sql.ResultSet; 
+import java.sql.SQLException; 
+import java.sql.Statement; 
+
+public class JavaApplication33 {
+
+   
+    public static void main(String[] args) {
+        // TODO code application logic here
+        try { 
+            Class<?> forName = Class.forName("org.postgresql.Driver"); 
+System.out.println("Postgresql JDBC Driver loaded"); 
+} catch (ClassNotFoundException e) { 
+System.out.println("Driver failed"); 
+return; 
+} 
+try { 
+try (Connection connection = DriverManager.getConnection( 
+"jdbc:postgresql://127.0.0.1:5432/bd6", 
+"postgres", "root")) { 
+System.out.println("good connection"); 
+exequteQuery(connection); 
+} 
+
+} catch (SQLException e) { 
+System.out.println("Connection Failed!"); 
+} 
+} 
+
+public static boolean exequteQuery(Connection c) { 
+try { 
+try (Statement s = c.createStatement()) { 
+ResultSet rs = s.executeQuery("Select * From tab1"); 
+while (rs.next()) { 
+for (int i = 1; i < 3; i++) { 
+String abr = rs.getString(1); 
+System.out.println(abr); 
+} 
+} 
+return true; 
+} 
+} catch (SQLException e) { 
+System.out.println("eroor"); 
+return false; 
+} 
+
+} 
+
+}
+
+
