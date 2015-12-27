@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Animation 3</title>
+		<style>
+			div{
+				position: absolute;
+				width : 10px;
+				height: 10px;
+				background-color: red;
+				border : 2px blue;
+				border-radius: 100%;
+			}
+		</style>
+		<script>
+			
+			function start()
+			{
+				var o1 = document.getElementById("o1");
+				var o2 = document.getElementById("o2");
+				var o3 = document.getElementById("o3");
+				var o4 = document.getElementById("o4");
+				var o5 = document.getElementById("o5");
+				var o6 = document.getElementById("o6");
+				var o7 = document.getElementById("o7");
+				var o8 = document.getElementById("o8");
+				var o9 = document.getElementById("o9");
+				var o10 = document.getElementById("o10");
+				
+				function Animate(x, a0)
+				{
+					
+					var R = 30, x0 = 200, y0 = 200, alpha = a0, tx=0, ty = 0;
+					var Interv = setInterval(function(){
+						if (alpha <Math.PI) alpha+=0.1;
+						else alpha+=0.05;
+						if (alpha >= 2*Math.PI) alpha = 0;
+						tx = x0 + Math.cos(alpha)*R;
+						ty = y0 + Math.sin(alpha)*R;
+						x.style.left = tx+'px';
+						x.style.top = ty+'px';
+					},7);
+				}
+				
+				Animate(o1,0);
+				Animate(o2,1);
+				Animate(o3,2);
+				Animate(o4,3);
+				Animate(o5,4);
+				Animate(o6,5);
+				Animate(o7,6);
+				Animate(o8,7);
+				Animate(o9,8);
+				Animate(o10,9);
+			}
+		</script>
+	</head>
+	<body onload="start()">
+		<div id="o1"></div>
+		<div id="o2"></div>
+		<div id="o3"></div>
+		<div id="o4"></div>
+		<div id="o5"></div>
+		<div id="o6"></div>
+		<div id="o7"></div>
+		<div id="o8"></div>
+		<div id="o9"></div>
+		<div id="o10"></div>
+	</body>
+</html>
