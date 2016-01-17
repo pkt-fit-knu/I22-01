@@ -1,0 +1,67 @@
+<!doctype html> 
+<html> 
+<head> 
+<title>tra</title> 
+<meta charset='utf-8' /> 
+</head> 
+<body> 
+<input type="button" value="Start" onClick="train()">
+<img id="ball" width="50" height="50" style="position: absolute; left: 50; top: 50" src="images.png" /> 
+<canvas id='example'></canvas> 
+<script> 
+
+var example = document.getElementById("example"), 
+ctx = example.getContext('2d'); 
+example.height = 1500; 
+example.width = 1500; 
+var tx = [];
+var ty = [];
+var alpha = 0;
+var a = 1;
+var b = 1;
+ctx.stroke();
+ctx.beginPath(); 
+ctx.strokeStyle = 'red'; 
+ctx.lineWidth = 15;
+ctx.moveTo(alpha*100, Math.sin(alpha)*a+350);
+
+var i=0;
+var Interv = setInterval(function(){
+alpha+=0.01;
+b = Math.sin(alpha);
+if((b > -0.004)&(b<0.004)){
+a = 3;
+}
+
+ctx.lineTo(alpha*100, Math.sin(alpha)*a*100+325); 
+tx[i] = a;
+i++;
+ctx.stroke(); 
+},0);
+
+function train(){
+var v=0; var p = Math.PI;
+var a1 = 1; var d=0;
+var Interv = setInterval(function(){
+v+=0.01;
+var k2 = 0;
+for(var i3 =0;i3<10;i3++){
+if((document.getElementById("ball").style.left > Math.PI/2*100+2*Math.PI*i3)&(document.getElementById("ball").style.left > Math.PI/2*300+2*Math.PI*i3)){
+k =1;
+} 
+}
+if(k2==1){
+v+=0.02;
+}
+document.getElementById("ball").style.left = v*100 +"px";
+a1 = tx[d];
+document.getElementById("ball").style.top = Math.sin(v)*a1*100+250 +"px";
+d++;
+},0);
+}
+
+
+</script> 
+</body> 
+</html>
+
